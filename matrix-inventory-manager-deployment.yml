@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matrix-inventory-manager-deployment
+  labels:
+    app: project-matrix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: matrix-inventory-manager-pod
+      app: project-matrix
+  template:
+    metadata:
+      name: matrix-inventory-manager-pod
+      labels:
+        name: matrix-inventory-manager-pod
+        app: project-matrix
+
+    spec:
+      containers:
+      - name: matrix-inventory-manager
+        image: openmatrix2/matrix-inventory-manager:latest
+        ports:
+        - containerPort: 9003

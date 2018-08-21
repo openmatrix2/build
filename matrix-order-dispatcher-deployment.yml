@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matrix-order-dispatcher-deployment
+  labels:
+    app: project-matrix
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: matrix-order-dispatcher-pod
+      app: project-matrix
+  template:
+    metadata:
+      name: matrix-order-dispatcher-pod
+      labels:
+        name: matrix-order-dispatcher-pod
+        app: project-matrix
+
+    spec:
+      containers:
+      - name: matrix-order-dispatcher
+        image: openmatrix2/matrix-order-dispatcher:latest
+        ports:
+        - containerPort: 9002
