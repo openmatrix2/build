@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matrix-customer-deployment
+  labels:
+    app: project-matrix
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: matrix-customer-pod
+      app: project-matrix
+  template:
+    metadata:
+      name: matrix-customer-pod
+      labels:
+        name: matrix-customer-pod
+        app: project-matrix
+
+    spec:
+      containers:
+      - name: matrix-customer
+        image: openmatrix2/matrix-customer:latest
+        ports:
+        - containerPort: 9001

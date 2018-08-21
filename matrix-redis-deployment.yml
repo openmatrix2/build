@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matrix-redis-deployment
+  labels:
+    app: project-matrix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: matrix-redis-pod
+      app: project-matrix
+  template:
+    metadata:
+      name: matrix-redis-pod
+      labels:
+        name: matrix-redis-pod
+        app: project-matrix
+
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        ports:
+        - containerPort: 6379
