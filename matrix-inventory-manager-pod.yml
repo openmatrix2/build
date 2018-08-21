@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: matrix-inventory-manager-pod
+  labels:
+    name: matrix-inventory-manager-pod
+    app: project-matrix
+
+spec:
+  containers:
+    - name: matrix-inventory-manager
+      image: openmatrix2/matrix-inventory-manager:latest
+      ports:
+        - containerPort: 9003

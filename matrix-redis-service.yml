@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: matrix-redis
+  labels:
+    name: matrix-redis-service
+    app: project-matrix
+
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    name: matrix-redis-pod
+    app: project-matrix
